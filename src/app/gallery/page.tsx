@@ -72,17 +72,21 @@ export default function GalleryPage() {
       : images.filter((img) =>
           selectedTags.every((tag) => img.hashtags.includes(tag))
         );
-
   return (
-    <div>
-      <h1>Image Gallery</h1>
+    <div className="max-w-6xl mx-auto px-4 py-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">Image Gallery</h1>
+
       <TagList
         allTags={allTags}
         selectedTags={selectedTags}
         onToggleTag={toggleTag}
       />
-      <GalleryGrid images={filteredImages} />
-      {loading && <p>Loading...</p>}
+
+      <div className="mt-6">
+        <GalleryGrid images={filteredImages} />
+      </div>
+
+      {loading && <p className="text-center mt-4 text-gray-500">Loading...</p>}
     </div>
   );
 }
